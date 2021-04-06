@@ -38,10 +38,12 @@ abstract class AbstractFilter
 							$find = $find && isset($item[$key]) && is_numeric($item[$key]) && is_numeric($value[1]) && $item[$key] <= $value[1];
 							break;
 						case 'LIKE':
-							$find = $find && isset($item[$key]) && stripos($item[$key], $value[1]) !== false;
+							$pattern = str_replace('%', '.*', preg_quote($value[1], '/'));
+							$find = $find && isset($item[$key]) && (bool) preg_match("/^{$pattern}$/i", $item[$key]);							
 							break;
 						case 'NOT LIKE':
-							$find = $find && isset($item[$key]) && stripos($item[$key], $value[1]) === false;
+							$pattern = str_replace('%', '.*', preg_quote($value[1], '/'));
+							$find = $find && isset($item[$key]) && !(bool) preg_match("/^{$pattern}$/i", $item[$key]);	
 							break;
 					}					
 				} else {
