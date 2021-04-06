@@ -1,0 +1,29 @@
+{
+    "name": "santanamic/php-hummingbot-sdk",
+    "description": "SDK for hummingbot API (scraping)",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "santanamic",
+            "email": "williansantanamic@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Hummingbot\\" : "src/Hummingbot" }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15"
+    },
+    "scripts": {
+		"lint": "php-cs-fixer fix --diff --dry-run",
+        "fix": "php-cs-fixer fix"
+    }
+}
